@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1100.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.manager.ui.main.MainController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleMenuCloseOp" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Add">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#addBookLoader" text="Add Book" />
+                        <MenuItem mnemonicParsing="false" onAction="#addMemberLoader" text="Add Member" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="View">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#bookTableLoader" text="View Books" />
+                        <MenuItem mnemonicParsing="false" onAction="#memberTableLoader" text="View Members" />
+                        <MenuItem mnemonicParsing="false" onAction="#returnTableLoader" text="View Return History" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleMenuFullScreen" text="Full Screen" />
+                     </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleMenuAbout" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <right>
+            <VBox prefHeight="414.0" prefWidth="142.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton contentDisplay="TOP" onAction="#addMemberLoader" prefHeight="105.0" prefWidth="150.0" style="-fx-background-color: rgb(33,150,243); -fx-border-color: white;" text="Add Member">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/add_mem.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="10.0" onAction="#addBookLoader" prefHeight="105.0" prefWidth="150.0" style="-fx-background-color: rgb(33,150,243); -fx-border-color: white;" text="Add Book">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/add_book.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="10.0" onAction="#memberTableLoader" prefHeight="105.0" prefWidth="150.0" style="-fx-background-color: rgb(33,150,243); -fx-border-color: white;" text="Member List">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/list_mem.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="10.0" onAction="#bookTableLoader" prefHeight="105.0" prefWidth="150.0" style="-fx-background-color: rgb(33,150,243); -fx-border-color: white;" text="Book List">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/list_book.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="10.0" onAction="#returnTableLoader" prefHeight="105.0" prefWidth="150.0" style="-fx-background-color: rgb(33,150,243); -fx-border-color: white;" text="History">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="362.0" onAction="#loadSettingsWindow" prefHeight="105.0" prefWidth="150.0" style="-fx-background-color: rgb(33,150,243); -fx-border-color: white;" text="Settings">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </right>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Issue Book">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox fx:id="book_Info" alignment="CENTER" prefHeight="240.0" prefWidth="918.0" style="-fx-background-color: #e7e7e7;">
+                                 <children>
+                                    <VBox prefHeight="227.0" prefWidth="282.0">
+                                       <children>
+                                          <JFXComboBox labelFloat="true" onAction="#loadSearchMode" prefHeight="38.0" prefWidth="247.0" promptText="Select Search mode">
+                                             <VBox.margin>
+                                                <Insets top="30.0" />
+                                             </VBox.margin>
+                                          </JFXComboBox>
+                                          <JFXTextField fx:id="bookIDInput" alignment="TOP_CENTER" onAction="#loadBookInfo" onKeyPressed="#loadAutoCompleteBookInfo" prefHeight="36.0" prefWidth="238.0" promptText="Enter Book ID">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <VBox.margin>
+                                                <Insets top="50.0" />
+                                             </VBox.margin>
+                                          </JFXTextField>
+                                          <AutoCompleteTextField fx:id="bookTitleInput" floatText="Enter Book info" onKeyTyped="#loadAutoCompleteBookInfo2">
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </AutoCompleteTextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="164.0" prefWidth="326.0">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <Text fx:id="bookName" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Title" textAlignment="CENTER" wrappingWidth="292.9830722808838" />
+                                          <Text fx:id="bookAuthor" layoutX="10.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author" textAlignment="CENTER" wrappingWidth="292.9830722808838">
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="bookStatus" layoutX="16.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" textAlignment="CENTER" wrappingWidth="292.9830722808838">
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox fx:id="member_Info" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="240.0" prefWidth="567.0" style="-fx-background-color: #e7e7e7;">
+                                 <children>
+                                    <JFXTextField fx:id="memberIDInput" alignment="TOP_CENTER" onAction="#loadMemberInfo" prefHeight="36.0" prefWidth="238.0" promptText="Enter Member ID">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </HBox.margin>
+                                    </JFXTextField>
+                                    <VBox alignment="CENTER" prefHeight="164.0" prefWidth="326.0">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <Text fx:id="memberName" strokeType="OUTSIDE" strokeWidth="0.0" text="Member Name" textAlignment="CENTER" wrappingWidth="292.9830722808838" />
+                                          <Text fx:id="contact" layoutX="10.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact" textAlignment="CENTER" wrappingWidth="292.9830722808838">
+                                             <VBox.margin>
+                                                <Insets top="15.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="memberStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" textAlignment="CENTER" wrappingWidth="292.9830722808838">
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="61.0" prefWidth="567.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" graphicTextGap="10.0" onAction="#loadBookIssue" prefHeight="46.0" prefWidth="142.0" style="-fx-background-color: rgb(33,150,243);" text="Issue">
+                                       <graphic>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/issue.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic></JFXButton>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
+                <Tab text="Renew / Return">
+                     <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                           <top>
+                              <JFXTextField fx:id="rBookID" onAction="#loadBookIssueInfo" prefHeight="36.0" prefWidth="567.0" promptText="Enter Book ID" BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets left="100.0" right="100.0" />
+                                 </BorderPane.margin>
+                              </JFXTextField>
+                           </top>
+                           <center>
+                              <ListView fx:id="issueDataList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                 </BorderPane.margin>
+                              </ListView>
+                           </center>
+                           <bottom>
+                              <HBox alignment="CENTER" prefHeight="57.0" prefWidth="567.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" graphicTextGap="10.0" onAction="#returnBookOperation" prefHeight="46.0" prefWidth="142.0" style="-fx-background-color: rgb(33,150,243);" text="Renew">
+                                       <graphic>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/renew.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" graphicTextGap="10.0" layoutX="499.0" layoutY="16.0" onAction="#returnBookOperation" prefHeight="46.0" prefWidth="142.0" style="-fx-background-color: rgb(33,150,243);" text="Return">
+                                       <graphic>
+                                          <ImageView fitHeight="36.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/return.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                 </children>
+                                 <BorderPane.margin>
+                                    <Insets bottom="10.0" />
+                                 </BorderPane.margin>
+                              </HBox>
+                           </bottom>
+                        </BorderPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

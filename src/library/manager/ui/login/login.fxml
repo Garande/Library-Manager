@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="439.0" prefWidth="420.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="library.manager.ui.login.LoginController">
+    <stylesheets>
+        <URL value="@login.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutY="134.0" prefHeight="235.0" prefWidth="420.0">
+         <children>
+            <JFXTextField fx:id="username" labelFloat="true" promptText="Username">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXPasswordField fx:id="pass" labelFloat="true" prefWidth="380.0" promptText="Pasword">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="50.0" />
+               </VBox.margin>
+            </JFXPasswordField>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutY="358.0" prefHeight="67.0" prefWidth="420.0" spacing="30.0">
+         <children>
+            <JFXButton fx:id="loginButton" buttonType="RAISED" graphicTextGap="10.0" onAction="#handleLoginButton" prefHeight="46.0" prefWidth="142.0" text="Login">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/return.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="cancelLoginButton" buttonType="RAISED" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" onAction="#handleCancelLoginButton" prefHeight="46.0" prefWidth="142.0" text="Cancel">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/return.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
