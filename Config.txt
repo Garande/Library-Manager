@@ -1,0 +1,1 @@
+{"nDays":14,"finePerDay":1000.0,"nBooks":2}
